@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">BGNMobi</string>
 
-    <!-- EXCEPTIONS -->
+    <!-- ERROR MESSAGES -->
     <string name="error_empty_response">No response was found.</string>
     <string name="error_general">An error occurred.</string>
     <string name="error_no_internet">Please check your internet connections.</string>
@@ -9,4 +9,7 @@
     <string name="error_http_400">Bad request</string>
     <string name="error_http_401">You need to be authorized to complete this request.</string>
     <string name="error_http_500">Internal service error.</string>
+
+    <!-- BUTTON TITLES -->
+    <string name="message_get_overlay_permisson">Give me overlay permission</string>
 </resources>
