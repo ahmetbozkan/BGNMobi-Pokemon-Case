@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BGNMobi</string>
+
+    <!-- EXCEPTIONS -->
+    <string name="error_empty_response">Sonuç bulunamadı.</string>
+    <string name="error_general">Bilinmeyen bir hata oluştu.</string>
+    <string name="error_no_internet">Lütfen internet bağlantınızı kontrol ediniz.</string>
+    <string name="error_timeout">Bağlantı zaman aşımına uğradı.</string>
+    <string name="error_http_400">Hatalı istek.</string>
+    <string name="error_http_401">Bu isteği gerçekleştirmek için yetkiniz yok.</string>
+    <string name="error_http_500">Servisten yanıt alınamıyor.</string>
+</resources>
