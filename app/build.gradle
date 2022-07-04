@@ -18,6 +18,8 @@ android {
         versionName generateVersionName()
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", base_url)
     }
 
     buildTypes {

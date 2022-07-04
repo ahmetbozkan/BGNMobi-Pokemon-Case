@@ -1,6 +1,5 @@
 package com.ahmetbozkan.bgnmobi.base
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,6 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
@@ -18,7 +16,6 @@ import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
 import com.ahmetbozkan.bgnmobi.R
 import com.ahmetbozkan.bgnmobi.core.Failure
-import com.ahmetbozkan.bgnmobi.util.extensions.getMessage
 import com.ahmetbozkan.bgnmobi.util.extensions.showToast
 
 abstract class BaseFragment<DB : ViewDataBinding, VM : BaseViewModel> : Fragment() {
@@ -71,9 +68,7 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : BaseViewModel> : Fragment
                 requireContext().showToast(exception.message ?: getString(R.string.error_general))
             }
             is Failure.HttpError -> {
-                requireContext().showToast(
-                    exception.getMessage(requireContext())
-                )
+                requireContext().showToast(exception.message)
             }
             is Failure.NoInternetError -> {
                 requireContext().showToast(exception.message ?: getString(R.string.error_general))
