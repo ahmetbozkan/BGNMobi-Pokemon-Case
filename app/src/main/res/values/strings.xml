@@ -12,4 +12,5 @@
 
     <!-- BUTTON TITLES -->
     <string name="message_get_overlay_permisson">Give me overlay permission</string>
+    <string name="close_app">Close App</string>
 </resources>

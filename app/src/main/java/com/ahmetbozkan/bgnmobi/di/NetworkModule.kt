@@ -23,7 +23,7 @@ import javax.inject.Singleton
 object NetworkModule {
 
     private const val CLIENT_CACHE_SIZE = 10 * 1024 * 1024L
-    private const val TIMEOUT: Long = 30
+    private const val TIMEOUT: Long = 10
 
     @Provides
     @Singleton

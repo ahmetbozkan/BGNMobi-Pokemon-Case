@@ -1,6 +1,8 @@
 package com.ahmetbozkan.bgnmobi.core
 
-sealed class Failure : Exception() {
+import java.io.IOException
+
+sealed class Failure : IOException() {
 
     data class HttpError(var code: Int, override var message: String) : Failure()
     data class TimeOutError(override var message: String?) : Failure()
