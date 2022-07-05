@@ -10,6 +10,9 @@ abstract class BaseViewModel : ViewModel() {
 
     protected val coroutineExceptionHandler = CoroutineExceptionHandler { _, t ->
         disableLoading()
+        _error.postValue(
+            Failure.GeneralError(t.message)
+        )
     }
 
     private val _isLoading = MutableLiveData<Boolean>()

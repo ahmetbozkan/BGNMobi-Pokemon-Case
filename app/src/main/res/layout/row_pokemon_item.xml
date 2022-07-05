@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="pokemon"
+            type="com.ahmetbozkan.bgnmobi.domain.model.PokemonEntity" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space_8"
+        app:cardCornerRadius="@dimen/space_16"
+        app:strokeColor="@android:color/darker_gray"
+        app:strokeWidth="1dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_pokemon_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/space_8"
+            android:layout_marginVertical="@dimen/space_4"
+            android:text="@{pokemon.name}"
+            tools:text="Balbausar" />
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
