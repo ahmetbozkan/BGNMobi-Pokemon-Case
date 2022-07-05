@@ -16,6 +16,5 @@
             android:layout_gravity="center"
             android:text="@string/message_get_overlay_permisson" />
 
-
     </FrameLayout>
 </layout>

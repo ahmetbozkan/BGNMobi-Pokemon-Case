@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="pokemon"
+            type="com.ahmetbozkan.bgnmobi.domain.model.PokemonDetailEntity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_pokemon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="125dp"
+            android:minHeight="125dp"
+            android:scaleType="fitXY"
+            app:loadFromUrl="@{pokemon.sprites.frontDefault}"
+            tools:src="@mipmap/ic_launcher_round" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_pokemon_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16"
+            android:text="@{@string/title_pokemon_name + pokemon.name}"
+            tools:text="Pokemon Name: ivysaur" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_pokemon_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_8"
+            android:text="@{@string/title_pokemon_height + pokemon.height}"
+            tools:text="Pokemon Height: 10" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_pokemon_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_8"
+            android:text="@{@string/title_pokemon_weight + pokemon.weight}"
+            tools:text="Pokemon Weight: 69" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_show_in_overlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_16"
+            tools:text="show ivysaur in overlay" />
+
+    </LinearLayout>
+</layout>

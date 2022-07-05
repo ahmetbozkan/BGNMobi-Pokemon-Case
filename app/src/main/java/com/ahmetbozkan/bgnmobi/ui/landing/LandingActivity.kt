@@ -56,4 +56,8 @@ class LandingActivity : BaseActivity<ActivityLandingBinding, LandingViewModel>()
         }
 
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
+    }
 }

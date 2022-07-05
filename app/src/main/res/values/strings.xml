@@ -13,4 +13,11 @@
     <!-- BUTTON TITLES -->
     <string name="message_get_overlay_permisson">Give me overlay permission</string>
     <string name="close_app">Close App</string>
+
+    <!-- POKEMON -->
+    <string name="title_pokemon_name">Pokemon Name:\t</string>
+    <string name="title_pokemon_height">Pokemon Height:\t</string>
+    <string name="title_pokemon_weight">Pokemon Weight:\t</string>
+    <string name="format_show_pokemon_in_overlay">Show %1$s in overlay</string>
+
 </resources>

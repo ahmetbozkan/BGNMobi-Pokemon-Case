@@ -1,4 +1,4 @@
-package com.ahmetbozkan.bgnmobi.ui.pokemons
+package com.ahmetbozkan.bgnmobi.ui.pokemon
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

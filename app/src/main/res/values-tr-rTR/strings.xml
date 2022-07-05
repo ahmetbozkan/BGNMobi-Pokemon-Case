@@ -14,4 +14,10 @@
     <!-- BUTTON TITLES -->
     <string name="message_get_overlay_permisson">Overlay izni al</string>
     <string name="close_app">Uygulamayı Kapat</string>
+
+    <!-- POKEMON -->
+    <string name="title_pokemon_name">Pokemon Adı:\t</string>
+    <string name="title_pokemon_height">Pokemon Uzunluğu:\t</string>
+    <string name="title_pokemon_weight">Pokemon Ağırlığı\t</string>
+    <string name="format_show_pokemon_in_overlay">%1$s\'ı overlay olarak göster</string>
 </resources>

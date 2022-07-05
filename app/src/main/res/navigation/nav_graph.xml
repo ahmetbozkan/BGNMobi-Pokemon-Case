@@ -7,7 +7,19 @@
 
     <fragment
         android:id="@+id/pokemonListFragment"
-        android:name="com.ahmetbozkan.bgnmobi.ui.pokemons.PokemonListFragment"
-        android:label="PokemonListFragment"
-        tools:layout="@layout/fragment_pokemon_list" />
+        android:name="com.ahmetbozkan.bgnmobi.ui.pokemon.PokemonListFragment"
+        android:label="Pokemons"
+        tools:layout="@layout/fragment_pokemon_list">
+        <action
+            android:id="@+id/action_pokemonListFragment_to_pokemonDetailsFragment"
+            app:destination="@id/pokemonDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pokemonDetailsFragment"
+        android:name="com.ahmetbozkan.bgnmobi.ui.pokemon.detail.PokemonDetailsFragment"
+        android:label="Pokemon Details">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
 </navigation>

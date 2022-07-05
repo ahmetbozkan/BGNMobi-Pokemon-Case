@@ -1,4 +1,4 @@
-package com.ahmetbozkan.bgnmobi.ui.pokemons
+package com.ahmetbozkan.bgnmobi.ui.pokemon
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
@@ -6,7 +6,6 @@ import com.ahmetbozkan.bgnmobi.R
 import com.ahmetbozkan.bgnmobi.base.BaseFragment
 import com.ahmetbozkan.bgnmobi.databinding.FragmentPokemonListBinding
 import com.ahmetbozkan.bgnmobi.domain.model.GetPokemonsEntity
-import com.ahmetbozkan.bgnmobi.domain.model.PokemonEntity
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -42,9 +41,11 @@ class PokemonListFragment : BaseFragment<FragmentPokemonListBinding, PokemonList
             adapter = pokemonsAdapter
         }
 
-        pokemonsAdapter.click = object : (PokemonEntity) -> Unit {
-            override fun invoke(pokemon: PokemonEntity) {
-                //todo
+        pokemonsAdapter.click = object : (Int) -> Unit {
+            override fun invoke(position: Int) {
+                val action = PokemonListFragmentDirections
+                    .actionPokemonListFragmentToPokemonDetailsFragment(position + 1)
+                navigate(action)
             }
         }
     }

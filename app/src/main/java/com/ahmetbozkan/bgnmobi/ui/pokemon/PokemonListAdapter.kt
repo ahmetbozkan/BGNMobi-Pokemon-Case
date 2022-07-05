@@ -1,4 +1,4 @@
-package com.ahmetbozkan.bgnmobi.ui.pokemons
+package com.ahmetbozkan.bgnmobi.ui.pokemon
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -17,7 +17,7 @@ class PokemonListAdapter @Inject constructor() :
     inner class PokemonViewHolder(val binding: RowPokemonItemBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    var click: ((PokemonEntity) -> Unit)? = null
+    var click: ((Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder =
         PokemonViewHolder(
@@ -36,7 +36,7 @@ class PokemonListAdapter @Inject constructor() :
             pokemon = currentItem
 
             root.setOnClickListener {
-                click?.invoke(currentItem)
+                click?.invoke(position)
             }
         }
     }
