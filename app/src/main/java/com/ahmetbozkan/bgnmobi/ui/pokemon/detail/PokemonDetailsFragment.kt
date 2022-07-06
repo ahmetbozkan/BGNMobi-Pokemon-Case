@@ -1,12 +1,19 @@
 package com.ahmetbozkan.bgnmobi.ui.pokemon.detail
 
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat.startForegroundService
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.ahmetbozkan.bgnmobi.R
 import com.ahmetbozkan.bgnmobi.base.BaseFragment
 import com.ahmetbozkan.bgnmobi.databinding.FragmentPokemonDetailsBinding
 import com.ahmetbozkan.bgnmobi.domain.model.PokemonDetailEntity
+import com.ahmetbozkan.bgnmobi.service.PokemonOverlayService
+import com.ahmetbozkan.bgnmobi.util.Constants
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,11 +26,23 @@ class PokemonDetailsFragment :
 
     private val args: PokemonDetailsFragmentArgs by navArgs()
 
+    private var pokemon: PokemonDetailEntity? = null
+
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun initialize(savedInstanceState: Bundle?) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!Settings.canDrawOverlays(requireContext())) {
+                // send user to the device settings
+                startActivity(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION))
+            }
+        }
 
         getArgs()
 
         subscribeToViewModel()
+
+        manageClick()
 
     }
 
@@ -38,6 +57,8 @@ class PokemonDetailsFragment :
     }
 
     private fun observePokemonDetails(pokemonDetailEntity: PokemonDetailEntity) {
+        pokemon = pokemonDetailEntity
+
         with(binding) {
             pokemon = pokemonDetailEntity
 
@@ -46,5 +67,20 @@ class PokemonDetailsFragment :
                 pokemonDetailEntity.name
             )
         }
+    }
+
+    private fun manageClick() = with(binding) {
+        btnShowInOverlay.setOnClickListener {
+            showInOverlay()
+        }
+    }
+
+    private fun showInOverlay() {
+        startForegroundService(
+            requireContext(),
+            Intent(requireActivity(), PokemonOverlayService::class.java).apply {
+                putExtra(Constants.POKEMON, pokemon)
+            }
+        )
     }
 }

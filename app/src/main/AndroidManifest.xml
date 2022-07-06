@@ -5,6 +5,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
@@ -14,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BGNMobi">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="true">
 
         </activity>
@@ -27,6 +30,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".service.PokemonOverlayService"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 
 </manifest>

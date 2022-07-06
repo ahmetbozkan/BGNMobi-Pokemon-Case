@@ -13,6 +13,7 @@
     <!-- BUTTON TITLES -->
     <string name="message_get_overlay_permisson">Give me overlay permission</string>
     <string name="close_app">Close App</string>
+    <string name="close_window">Close Window</string>
 
     <!-- POKEMON -->
     <string name="title_pokemon_name">Pokemon Name:\t</string>

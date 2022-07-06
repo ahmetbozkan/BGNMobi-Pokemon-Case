@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="pokemon"
+            type="com.ahmetbozkan.bgnmobi.domain.model.PokemonDetailEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space_16"
+        android:background="@color/white"
+        android:padding="@dimen/space_8">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_pokemon_front"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_8"
+            android:minWidth="75dp"
+            app:loadFromUrl="@{pokemon.sprites.frontDefault}"
+            android:minHeight="75dp"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toStartOf="@+id/img_pokemon_back"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_launcher_round" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_pokemon_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_8"
+            android:minWidth="75dp"
+            app:loadFromUrl="@{pokemon.sprites.backDefault}"
+            android:minHeight="75dp"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_pokemon_front"
+            app:layout_constraintTop_toTopOf="@id/img_pokemon_front"
+            tools:src="@mipmap/ic_launcher_round" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_pokemon_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{pokemon.name}"
+            android:layout_marginTop="@dimen/space_8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_pokemon_front"
+            tools:text="ivysaur" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_close_window"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_pokemon_name"
+            android:text="@string/close_window" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
