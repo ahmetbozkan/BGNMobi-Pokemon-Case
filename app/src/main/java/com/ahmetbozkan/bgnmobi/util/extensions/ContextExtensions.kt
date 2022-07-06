@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import android.provider.Settings
 import android.widget.Toast
 
 fun Context.showToast(message: String, length: Int = Toast.LENGTH_SHORT) {
@@ -22,3 +23,6 @@ fun Context.isNetworkAvailable(): Boolean {
         cm.activeNetworkInfo != null && cm.activeNetworkInfo!!.isConnected
     }
 }
+
+val Context.canDrawOverlays: Boolean
+    get() = Build.VERSION.SDK_INT < Build.VERSION_CODES.M || Settings.canDrawOverlays(this)

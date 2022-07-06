@@ -1,10 +1,7 @@
 package com.ahmetbozkan.bgnmobi.ui.pokemon.detail
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
-import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat.startForegroundService
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -28,15 +25,7 @@ class PokemonDetailsFragment :
 
     private var pokemon: PokemonDetailEntity? = null
 
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun initialize(savedInstanceState: Bundle?) {
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (!Settings.canDrawOverlays(requireContext())) {
-                // send user to the device settings
-                startActivity(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION))
-            }
-        }
 
         getArgs()
 
