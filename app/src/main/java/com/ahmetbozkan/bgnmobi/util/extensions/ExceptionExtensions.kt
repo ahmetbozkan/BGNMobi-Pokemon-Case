@@ -12,3 +12,5 @@ fun Int.getHttpErrorMessage(context: Context): String {
         else -> context.getString(R.string.error_general)
     }
 }
+
+fun String?.orGeneralException(context: Context): String = this ?: context.getString(R.string.error_general)

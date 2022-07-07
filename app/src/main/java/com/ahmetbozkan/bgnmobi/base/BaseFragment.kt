@@ -33,7 +33,7 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : BaseViewModel> : Fragment
 
     private val navOptions = NavOptions.Builder().setLaunchSingleTop(true).build()
 
-    protected lateinit var navController: NavController
+    private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,23 +63,7 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : BaseViewModel> : Fragment
     }
 
     private fun observeError(exception: Failure?) {
-        when (exception) {
-            is Failure.EmptyResponse -> {
-                requireContext().showToast(exception.message ?: getString(R.string.error_general))
-            }
-            is Failure.GeneralError -> {
-                requireContext().showToast(exception.message ?: getString(R.string.error_general))
-            }
-            is Failure.HttpError -> {
-                requireContext().showToast(exception.message)
-            }
-            is Failure.NoInternetError -> {
-                requireContext().showToast(exception.message ?: getString(R.string.error_general))
-            }
-            is Failure.TimeOutError -> {
-                requireContext().showToast(exception.message ?: getString(R.string.error_timeout))
-            }
-        }
+        // handle exceptions in general
     }
 
     private fun putViewModel() {

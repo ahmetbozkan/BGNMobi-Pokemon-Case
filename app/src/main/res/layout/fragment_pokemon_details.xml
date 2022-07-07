@@ -15,71 +15,61 @@
     </data>
 
     <com.ahmetbozkan.bgnmobi.cv.LoadingConstraintLayout
+        android:id="@+id/root"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:isVisible="@{viewModel.isLoading()}">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/img_pokemon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minWidth="125dp"
-            android:minHeight="125dp"
-            android:scaleType="fitXY"
-            app:layout_constraintBottom_toTopOf="@+id/tv_pokemon_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:loadFromUrl="@{pokemon.sprites.frontDefault}"
-            tools:src="@mipmap/ic_launcher_round" />
+        <LinearLayout
+            android:id="@+id/ll_pokemon_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_pokemon_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_16"
-            android:text="@{@string/title_pokemon_name + pokemon.name}"
-            app:layout_constraintBottom_toTopOf="@+id/tv_pokemon_height"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_pokemon"
-            tools:text="Pokemon Name: ivysaur" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_pokemon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="125dp"
+                android:minHeight="125dp"
+                android:scaleType="fitXY"
+                app:loadFromUrl="@{pokemon.sprites.frontDefault}"
+                tools:src="@mipmap/ic_launcher_round" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_pokemon_height"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_8"
-            android:text="@{@string/title_pokemon_height + pokemon.height}"
-            app:layout_constraintBottom_toTopOf="@+id/tv_pokemon_weight"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_pokemon_name"
-            tools:text="Pokemon Height: 10" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_pokemon_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_16"
+                android:text="@{@string/title_pokemon_name + pokemon.name}"
+                tools:text="Pokemon Name: ivysaur" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_pokemon_weight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_8"
-            android:text="@{@string/title_pokemon_weight + pokemon.weight}"
-            app:layout_constraintBottom_toTopOf="@+id/btn_show_in_overlay"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_pokemon_height"
-            tools:text="Pokemon Weight: 69" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_pokemon_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_8"
+                android:text="@{@string/title_pokemon_height + pokemon.height}"
+                tools:text="Pokemon Height: 10" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_show_in_overlay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_16"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_pokemon_weight"
-            tools:text="show ivysaur in overlay" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_pokemon_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_8"
+                android:text="@{@string/title_pokemon_weight + pokemon.weight}"
+                tools:text="Pokemon Weight: 69" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_show_in_overlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_16"
+                tools:text="show ivysaur in overlay" />
+
+        </LinearLayout>
 
     </com.ahmetbozkan.bgnmobi.cv.LoadingConstraintLayout>
 </layout>

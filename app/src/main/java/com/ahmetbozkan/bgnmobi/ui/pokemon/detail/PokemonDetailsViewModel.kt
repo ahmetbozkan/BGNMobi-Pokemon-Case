@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.ahmetbozkan.bgnmobi.base.BaseViewModel
+import com.ahmetbozkan.bgnmobi.core.Resource
 import com.ahmetbozkan.bgnmobi.core.Status
 import com.ahmetbozkan.bgnmobi.domain.model.PokemonDetailEntity
 import com.ahmetbozkan.bgnmobi.domain.usecase.GetPokemonDetailsUseCase
@@ -17,21 +18,22 @@ class PokemonDetailsViewModel @Inject constructor(
     private val getPokemonDetailsUseCase: GetPokemonDetailsUseCase
 ) : BaseViewModel() {
 
-    private val _pokemon = MutableLiveData<PokemonDetailEntity>()
-    val pokemon: LiveData<PokemonDetailEntity> get() = _pokemon
+    private val _pokemon = MutableLiveData<Resource<PokemonDetailEntity>>()
+    val pokemon: LiveData<Resource<PokemonDetailEntity>> get() = _pokemon
 
     fun getPokemonDetails(id: Int) =
         viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
-            enableLoading()
+            _pokemon.postValue(Resource.loading())
 
             val result = getPokemonDetailsUseCase.invoke(id)
 
             when (result.status) {
-                Status.SUCCESS -> {
-                    _pokemon.postValue(result.data!!)
-                    disableLoading()
+                Status.SUCCESS -> _pokemon.postValue(result)
+                Status.ERROR -> {
+                    _pokemon.postValue(Resource.error(null, result.error))
+                    manageException(result.error)
                 }
-                Status.ERROR -> manageException(result.error)
+                Status.LOADING -> _pokemon.postValue(Resource.loading())
             }
         }
 

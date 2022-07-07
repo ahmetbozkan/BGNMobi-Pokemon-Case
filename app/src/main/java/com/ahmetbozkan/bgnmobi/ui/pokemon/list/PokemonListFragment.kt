@@ -1,7 +1,6 @@
 package com.ahmetbozkan.bgnmobi.ui.pokemon.list
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.paging.LoadState
 import androidx.paging.PagingData
@@ -9,7 +8,7 @@ import com.ahmetbozkan.bgnmobi.R
 import com.ahmetbozkan.bgnmobi.base.BaseFragment
 import com.ahmetbozkan.bgnmobi.databinding.FragmentPokemonListBinding
 import com.ahmetbozkan.bgnmobi.domain.model.PokemonEntity
-import com.ahmetbozkan.bgnmobi.util.extensions.visible
+import com.ahmetbozkan.bgnmobi.util.extensions.orGeneralException
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -37,7 +36,7 @@ class PokemonListFragment : BaseFragment<FragmentPokemonListBinding, PokemonList
 
     private fun observePokemons(pagingData: PagingData<PokemonEntity>) {
         pokemonsPagingAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData)
-
+        binding.root.onSuccess()
     }
 
     private fun initPokemonsRcv() {
@@ -49,11 +48,9 @@ class PokemonListFragment : BaseFragment<FragmentPokemonListBinding, PokemonList
             )
 
             pokemonsPagingAdapter.addLoadStateListener { loadState ->
-                if (loadState.refresh is LoadState.Loading){
-                    binding.root.progressBar.visible()
-                }
-                else{
-                    // getting the error
+                if (loadState.refresh is LoadState.Loading) binding.root.onLoading()
+                else if (loadState.refresh is LoadState.NotLoading) binding.root.onSuccess()
+                else {
                     val error = when {
                         loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
                         loadState.append is LoadState.Error -> loadState.append as LoadState.Error
@@ -61,7 +58,9 @@ class PokemonListFragment : BaseFragment<FragmentPokemonListBinding, PokemonList
                         else -> null
                     }
                     error?.let {
-                        Toast.makeText(requireContext(), it.error.message, Toast.LENGTH_LONG).show()
+                        binding.root.onError(it.error.message.orGeneralException(requireContext())) {
+                            pokemonsPagingAdapter.retry()
+                        }
                     }
                 }
             }
