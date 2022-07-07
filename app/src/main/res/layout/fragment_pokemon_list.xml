@@ -5,11 +5,15 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.ahmetbozkan.bgnmobi.ui.pokemon.PokemonListViewModel" />
     </data>
 
-    <FrameLayout
+    <com.ahmetbozkan.bgnmobi.cv.LoadingConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:isVisible="@{viewModel.isLoading()}">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_pokemons"
@@ -17,7 +21,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/row_pokemon_item" />
 
-    </FrameLayout>
+    </com.ahmetbozkan.bgnmobi.cv.LoadingConstraintLayout>
 </layout>

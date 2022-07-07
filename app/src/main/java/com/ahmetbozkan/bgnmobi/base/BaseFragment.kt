@@ -14,6 +14,7 @@ import androidx.navigation.NavOptions
 import androidx.navigation.fragment.DialogFragmentNavigator
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
+import com.ahmetbozkan.bgnmobi.BR
 import com.ahmetbozkan.bgnmobi.R
 import com.ahmetbozkan.bgnmobi.core.Failure
 import com.ahmetbozkan.bgnmobi.util.extensions.showToast
@@ -53,6 +54,8 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : BaseViewModel> : Fragment
         subscribeToViewModel()
 
         initNavigation()
+
+        putViewModel()
     }
 
     private fun subscribeToViewModel() {
@@ -77,6 +80,10 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : BaseViewModel> : Fragment
                 requireContext().showToast(exception.message ?: getString(R.string.error_timeout))
             }
         }
+    }
+
+    private fun putViewModel() {
+        binding.setVariable(BR.viewModel, viewModel)
     }
 
     private fun initNavigation() {
