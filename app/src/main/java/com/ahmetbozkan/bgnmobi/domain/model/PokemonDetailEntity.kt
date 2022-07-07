@@ -3,7 +3,6 @@ package com.ahmetbozkan.bgnmobi.domain.model
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
-
 @Parcelize
 data class PokemonDetailEntity(
     val id: Int,

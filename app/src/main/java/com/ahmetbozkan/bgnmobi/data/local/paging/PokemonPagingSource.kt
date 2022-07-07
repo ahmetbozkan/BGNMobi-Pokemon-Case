@@ -2,7 +2,6 @@ package com.ahmetbozkan.bgnmobi.data.local.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.ahmetbozkan.bgnmobi.core.Failure
 import com.ahmetbozkan.bgnmobi.core.Status
 import com.ahmetbozkan.bgnmobi.data.local.mapper.GetPokemonsResponseMapper
 import com.ahmetbozkan.bgnmobi.data.remote.datasource.PokeDataSource
@@ -13,8 +12,7 @@ private const val DEFAULT_LOAD_SIZE = 20
 
 class PokemonPagingSource(
     private val dataSource: PokeDataSource,
-    private val mapper: GetPokemonsResponseMapper,
-    private val localError: (Failure) -> Unit
+    private val mapper: GetPokemonsResponseMapper
 ) : PagingSource<Int, PokemonEntity>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, PokemonEntity> {
@@ -33,11 +31,9 @@ class PokemonPagingSource(
                     nextKey = if (pokemons.isEmpty()) null else position + loadSize
                 )
             } else {
-                localError(response.error!!)
-                LoadResult.Error(Throwable(response.error.message.orEmpty()))
+                LoadResult.Error(Throwable(response.error?.message.orEmpty()))
             }
         } catch (exception: Exception) {
-            localError(Failure.GeneralError(exception.message))
             LoadResult.Error(exception)
         }
     }

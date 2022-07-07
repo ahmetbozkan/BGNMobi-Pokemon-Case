@@ -15,9 +15,7 @@ import androidx.navigation.fragment.DialogFragmentNavigator
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
 import com.ahmetbozkan.bgnmobi.BR
-import com.ahmetbozkan.bgnmobi.R
 import com.ahmetbozkan.bgnmobi.core.Failure
-import com.ahmetbozkan.bgnmobi.util.extensions.showToast
 
 abstract class BaseFragment<DB : ViewDataBinding, VM : BaseViewModel> : Fragment() {
 

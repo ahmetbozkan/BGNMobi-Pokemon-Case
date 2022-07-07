@@ -2,10 +2,9 @@ package com.ahmetbozkan.bgnmobi.util.extensions
 
 import android.content.Context
 import com.ahmetbozkan.bgnmobi.R
-import com.ahmetbozkan.bgnmobi.core.Failure
 
 fun Int.getHttpErrorMessage(context: Context): String {
-    return when(this) {
+    return when (this) {
         400 -> context.getString(R.string.error_http_400)
         401 -> context.getString(R.string.error_http_401)
         500 -> context.getString(R.string.error_http_500)
@@ -13,4 +12,5 @@ fun Int.getHttpErrorMessage(context: Context): String {
     }
 }
 
-fun String?.orGeneralException(context: Context): String = this ?: context.getString(R.string.error_general)
+fun String?.orGeneralException(context: Context): String =
+    this ?: context.getString(R.string.error_general)

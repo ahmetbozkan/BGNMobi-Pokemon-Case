@@ -48,18 +48,20 @@ class PokemonListFragment : BaseFragment<FragmentPokemonListBinding, PokemonList
             )
 
             pokemonsPagingAdapter.addLoadStateListener { loadState ->
-                if (loadState.refresh is LoadState.Loading) binding.root.onLoading()
-                else if (loadState.refresh is LoadState.NotLoading) binding.root.onSuccess()
-                else {
-                    val error = when {
-                        loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
-                        loadState.append is LoadState.Error -> loadState.append as LoadState.Error
-                        loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
-                        else -> null
-                    }
-                    error?.let {
-                        binding.root.onError(it.error.message.orGeneralException(requireContext())) {
-                            pokemonsPagingAdapter.retry()
+                when (loadState.refresh) {
+                    is LoadState.Loading -> binding.root.onLoading()
+                    is LoadState.NotLoading -> binding.root.onSuccess()
+                    else -> {
+                        val error = when {
+                            loadState.prepend is LoadState.Error -> loadState.prepend as LoadState.Error
+                            loadState.append is LoadState.Error -> loadState.append as LoadState.Error
+                            loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
+                            else -> null
+                        }
+                        error?.let {
+                            binding.root.onError(it.error.message.orGeneralException(requireContext())) {
+                                pokemonsPagingAdapter.retry()
+                            }
                         }
                     }
                 }

@@ -15,6 +15,7 @@
     <string name="message_get_overlay_permisson">Overlay izni al</string>
     <string name="close_app">Uygulamayı Kapat</string>
     <string name="close_window">Pencereyi Kapat</string>
+    <string name="retry">Tekrar Dene</string>
 
     <!-- POKEMON -->
     <string name="title_pokemon_name">Pokemon Adı:\t</string>

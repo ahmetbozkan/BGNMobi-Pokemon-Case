@@ -16,7 +16,7 @@ class LoadingConstraintLayout @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
-    val progressBar: ProgressBar
+    private val progressBar: ProgressBar
 
     private val errorRoot: ConstraintLayout
     private val tvError: AppCompatTextView

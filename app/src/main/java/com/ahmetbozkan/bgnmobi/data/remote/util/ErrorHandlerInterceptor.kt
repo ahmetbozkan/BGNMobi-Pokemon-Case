@@ -24,7 +24,7 @@ class ErrorHandlerInterceptor constructor(private val context: Context) : Interc
             throw when (exception) {
                 is UnknownHostException, is IllegalArgumentException -> Failure.UnknownHostError
                 is HttpException -> Failure.HttpError(exception.code(), exception.code().getHttpErrorMessage(context))
-                is SocketTimeoutException -> Failure.TimeOutError(exception.message)
+                is SocketTimeoutException -> Failure.TimeOutError(context.getString(R.string.error_timeout))
                 is EOFException -> Failure.EmptyResponse(context.getString(R.string.error_empty_response))
 
                 else -> Failure.GeneralError(context.getString(R.string.error_general))
