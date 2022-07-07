@@ -11,9 +11,12 @@ class PokeDataSource @Inject constructor(
     private val api: PokeApi
 ) : BaseDataSource() {
 
-    suspend fun getPokemons(): Resource<GetPokemonsResponseModel> =
+    suspend fun getPokemons(
+        offset: Int,
+        limit: Int
+    ): Resource<GetPokemonsResponseModel> =
         handleRequest {
-            api.getPokemons()
+            api.getPokemons(offset, limit)
         }
 
     suspend fun getPokemonDetails(id: Int): Resource<GetPokemonDetailsResponseModel> =

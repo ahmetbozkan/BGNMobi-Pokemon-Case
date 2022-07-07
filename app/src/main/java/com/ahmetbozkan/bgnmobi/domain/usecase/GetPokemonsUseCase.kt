@@ -1,7 +1,8 @@
 package com.ahmetbozkan.bgnmobi.domain.usecase
 
-import com.ahmetbozkan.bgnmobi.core.Resource
-import com.ahmetbozkan.bgnmobi.domain.model.GetPokemonsEntity
+import androidx.lifecycle.LiveData
+import androidx.paging.PagingData
+import com.ahmetbozkan.bgnmobi.domain.model.PokemonEntity
 import com.ahmetbozkan.bgnmobi.domain.repository.PokeRepository
 import javax.inject.Inject
 
@@ -9,7 +10,7 @@ class GetPokemonsUseCase @Inject constructor(
     private val repository: PokeRepository
 ) {
 
-    suspend operator fun invoke(): Resource<GetPokemonsEntity> =
+    operator fun invoke(): LiveData<PagingData<PokemonEntity>> =
         repository.getPokemons()
 
 }

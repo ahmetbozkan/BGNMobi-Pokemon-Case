@@ -1,4 +1,4 @@
-package com.ahmetbozkan.bgnmobi.ui.pokemon
+package com.ahmetbozkan.bgnmobi.ui.pokemon.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

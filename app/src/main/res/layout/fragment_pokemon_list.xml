@@ -7,10 +7,11 @@
 
         <variable
             name="viewModel"
-            type="com.ahmetbozkan.bgnmobi.ui.pokemon.PokemonListViewModel" />
+            type="com.ahmetbozkan.bgnmobi.ui.pokemon.list.PokemonListViewModel" />
     </data>
 
     <com.ahmetbozkan.bgnmobi.cv.LoadingConstraintLayout
+        android:id="@+id/root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:isVisible="@{viewModel.isLoading()}">

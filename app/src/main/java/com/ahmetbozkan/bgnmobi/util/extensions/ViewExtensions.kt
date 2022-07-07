@@ -2,14 +2,14 @@ package com.ahmetbozkan.bgnmobi.util.extensions
 
 import android.view.View
 
-fun View.goneView() {
+fun View.gone() {
     this.visibility = View.GONE
 }
 
-fun View.showView() {
+fun View.visible() {
     this.visibility = View.VISIBLE
 }
 
-fun View.hideView() {
+fun View.invisible() {
     this.visibility = View.INVISIBLE
 }
