@@ -48,6 +48,8 @@ class PokemonListFragment : BaseFragment<FragmentPokemonListBinding, PokemonList
             )
 
             pokemonsPagingAdapter.addLoadStateListener { loadState ->
+                // manage the custom loading constraintlayout with current pagingListAdapter state
+                // e.g showing progress bar or error views in custom const. layout
                 when (loadState.refresh) {
                     is LoadState.Loading -> binding.root.onLoading()
                     is LoadState.NotLoading -> binding.root.onSuccess()
@@ -60,6 +62,7 @@ class PokemonListFragment : BaseFragment<FragmentPokemonListBinding, PokemonList
                         }
                         error?.let {
                             binding.root.onError(it.error.message.orGeneralException(requireContext())) {
+                                // if any error occures when retrieving the data, send request again with the current paging state
                                 pokemonsPagingAdapter.retry()
                             }
                         }

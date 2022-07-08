@@ -8,6 +8,7 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 
 abstract class BaseViewModel : ViewModel() {
 
+    // if any coroutine error occures in operations, prevent app from crashing, show error message instead
     protected val coroutineExceptionHandler = CoroutineExceptionHandler { _, t ->
         _error.postValue(
             Failure.GeneralError(t.message)

@@ -7,7 +7,7 @@ import retrofit2.Response
 abstract class BaseDataSource {
 
     /**
-     * handle request
+     * turn retrofit response wrapper to custom Resource wrapper to manage error & success states
      */
     protected suspend fun <T> handleRequest(callback: suspend () -> Response<T>): Resource<T> {
         return try {

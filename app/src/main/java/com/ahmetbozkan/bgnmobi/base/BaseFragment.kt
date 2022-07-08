@@ -72,6 +72,8 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : BaseViewModel> : Fragment
         navController = findNavController()
     }
 
+    // ensure the current destination is the correct destination before navigation
+    // otherwise it will crash when executing navigate() multiple times at once
     protected fun navigate(directions: NavDirections) {
         val currentDestination =
             (navController.currentDestination as? FragmentNavigator.Destination)?.className

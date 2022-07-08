@@ -12,6 +12,7 @@ import java.io.EOFException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
+// turn default exceptions to custom Failure objects to show custom states to the user later
 class ErrorHandlerInterceptor constructor(private val context: Context) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
