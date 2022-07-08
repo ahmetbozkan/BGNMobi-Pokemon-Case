@@ -11,6 +11,7 @@ import com.ahmetbozkan.bgnmobi.databinding.ActivityLoginBinding
 import com.ahmetbozkan.bgnmobi.ui.landing.LandingActivity
 import com.ahmetbozkan.bgnmobi.util.extensions.canDrawOverlays
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.RuntimeException
 
 @AndroidEntryPoint
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
@@ -24,6 +25,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
         checkOverlayPermission()
 
         manageClick()
+
+        throw RuntimeException("Crashlytics test")
 
     }
 
