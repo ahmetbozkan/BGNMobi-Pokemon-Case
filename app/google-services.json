@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "757729967702",
+    "project_id": "bgnmobi",
+    "storage_bucket": "bgnmobi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757729967702:android:92c4456678066d99cc85f7",
+        "android_client_info": {
+          "package_name": "com.ahmetbozkan.bgnmobi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "757729967702-jm86dg8cmapovu7t7ehe8qhjc1t3sboh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsEjuer5Iyb8U7lomkjUsCVJeXkgff_68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "757729967702-jm86dg8cmapovu7t7ehe8qhjc1t3sboh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
