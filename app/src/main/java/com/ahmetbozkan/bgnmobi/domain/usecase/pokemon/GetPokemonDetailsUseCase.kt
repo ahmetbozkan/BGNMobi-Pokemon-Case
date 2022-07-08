@@ -1,4 +1,4 @@
-package com.ahmetbozkan.bgnmobi.domain.usecase
+package com.ahmetbozkan.bgnmobi.domain.usecase.pokemon
 
 import com.ahmetbozkan.bgnmobi.core.Resource
 import com.ahmetbozkan.bgnmobi.domain.model.PokemonDetailEntity

@@ -1,4 +1,4 @@
-package com.ahmetbozkan.bgnmobi.domain.usecase
+package com.ahmetbozkan.bgnmobi.domain.usecase.pokemon
 
 import androidx.lifecycle.LiveData
 import androidx.paging.PagingData

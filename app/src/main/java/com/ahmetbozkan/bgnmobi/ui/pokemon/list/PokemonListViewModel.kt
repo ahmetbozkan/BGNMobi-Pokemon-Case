@@ -3,7 +3,7 @@ package com.ahmetbozkan.bgnmobi.ui.pokemon.list
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import com.ahmetbozkan.bgnmobi.base.BaseViewModel
-import com.ahmetbozkan.bgnmobi.domain.usecase.GetPokemonsUseCase
+import com.ahmetbozkan.bgnmobi.domain.usecase.pokemon.GetPokemonsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.plus
 import javax.inject.Inject

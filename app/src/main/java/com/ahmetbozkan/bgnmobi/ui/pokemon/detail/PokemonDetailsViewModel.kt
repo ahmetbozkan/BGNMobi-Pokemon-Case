@@ -7,7 +7,7 @@ import com.ahmetbozkan.bgnmobi.base.BaseViewModel
 import com.ahmetbozkan.bgnmobi.core.Resource
 import com.ahmetbozkan.bgnmobi.core.Status
 import com.ahmetbozkan.bgnmobi.domain.model.PokemonDetailEntity
-import com.ahmetbozkan.bgnmobi.domain.usecase.GetPokemonDetailsUseCase
+import com.ahmetbozkan.bgnmobi.domain.usecase.pokemon.GetPokemonDetailsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
